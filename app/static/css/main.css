@@ -36,3 +36,15 @@ body {
 #inputEmail3-error {
     color: red;
 }
+
+#flash-message {
+    color: white;
+    font-family: 'Hind';
+    font-size: 15px;
+}
+
+#flash-message ul {
+    margin: 10px 0;
+    list-style: none;
+    padding: 0;
+}

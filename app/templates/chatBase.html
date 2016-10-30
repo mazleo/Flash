@@ -3,17 +3,26 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Hind|Monoton" rel="stylesheet">
         <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/css/chat.css" rel="stylesheet">
         <link href="../img/favicon.ico" rel="shortcut icon">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-      <div class="header">
+      <div class="header border">
         <span class="logo">FLASH</span>
+        
+        {% if user %}
+        <div class="user">
+          <span class="username">{{ user.username }}</span>
+          <span class="logout"><a class="logout" href="/">Switch Room|</a><a class="logout" href="/logout">Log out</a></span>
+        </div>
+        {% endif %}
       </div>
-      <div class="body">
+      <div class="body border">
         {% block content %}{% endblock %}
       </div>
-      <div class="footer"></div>
+      <div class="footer border"></div>
     </body>
 </html>

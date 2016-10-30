@@ -1,5 +1,27 @@
-{% extends chatBase.html %}
+{% extends 'chatBase.html' %}
 
 {% block content %}
-<div class="room-code"></div>
+<div class="room-code">
+  <h3>ROOM CODE</h3>
+  <span>The room code identifies your group's chat room. Existing room codes retain past messages and new ones will create a blank room. Enter a combination of 4 letters or numbers.</span>
+
+  <form class="form-inline" action="chat" method="POST">
+    <div class="form-group">
+      <label class="sr-only">Room Code</label>
+      <input type="text" class="form-control" id="room-code" name="room-code" placeholder="Enter room code">
+    </div>
+    <button type="submit" class="btn btn-default">Enter</button>
+  </form>
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div id="flash-message">    
+          <ul>
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %} 
+          </ul>
+      </div>
+      {% endif %}
+  {% endwith %}
+</div>
 {% endblock %}

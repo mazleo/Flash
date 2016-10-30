@@ -1,3 +1,43 @@
-{% extends chatBase.html %}
+{% extends 'chatBase.html' %}
 {% block content %}
+<div class="large-container">
+  <div class="members">
+    <h3>MEMBERS</h3>
+    <ul class="message-list">
+      {% for user in users %}
+      <li>{{ user.username }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="chat-container">
+    <div class="chat-room">
+      <h3>CHAT ROOM: {{ room_code }} </h3>
+      <div class="messages">
+        <ul class="message-list">
+        {% if messages|length > 0 %}
+        {% for message in messages %}
+        <li><span id="user">{{ message.user.username }}:</span> {{ message.chat_msg }}</li>
+        {% endfor %}
+        {% else %}
+        <li>No messages yet.</li>
+        {% endif %}
+        </ul>
+      </div>
+    </div>
+    <form class="form-inline" action="chat_msg" method="POST">
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputChat" name="message" placeholder="Enter Message...">
+          <input type="text" class="form-control" id="inputRC" name="room_code" value={{room_code}} style="visibility:hidden;height:0!important;">
+          <input type="text" class="form-control" id="inputUser" name="user" value={{user}} style="visibility:hidden;height:0!important;">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}

@@ -28,26 +28,35 @@ $(document).ready(function() {
 
   var signupButtonInt = setInterval(setSignupButton, 500);
 
+  // $('#signin-button').click(function() {
+  //   $('.signin-form').submit();
+  // });
+
   $('.signup-form').validate({
+    debug: false,
     showErrors: function(error, element) {
     },
     rules: {
       email: {
-        required: true,
         checkEmail: true
       },
       username: {
-        required: true,
         checkUser: true
       },
       password: {
-        required: true,
         checkPass: true
       },
       confirmpassword: {
-        required: true,
         confirmPass: true
       }
+    },
+    onsubmit: false,
+    submitHandler: function(form) {
+      console.log("SUBMIT");
+      if ($(form).valid()) {
+        form.submit();
+      }
+      return false;
     }
   });
 });
